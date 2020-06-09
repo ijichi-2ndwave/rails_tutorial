@@ -1,0 +1,22 @@
+header {
+    border-bottom:  solid 1px;  /* 枠線指定 */
+    padding:  10px;             /* 余白指定 */
+}
+body {
+    backgraund-color: #345;
+}
+
+.bg_color {
+    text-align:  center;        /* 文字中央揃え */
+    color:  #fff;               /* 文字色指定 */
+    background-color:  #000;    /* 背景色指定 */
+}
+footer {
+    border-top: solid 1px;      /* 枠線指定 */
+    padding:  10px;             /* 余白指定 */
+}
+ 
+main {
+    padding:  20px;             /* 余白指定 */
+    height:  300px;             /* 高さ指定 */
+}

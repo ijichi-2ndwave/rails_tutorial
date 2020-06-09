@@ -1,0 +1,23 @@
+<body>
+<div class="example">
+<h1>ユーザー編集</h1>
+<form action="/users/update" method="post">
+<table border="1">
+  <tr>
+    <th>名前</th>
+    <th>年齢</th>
+    <th>自己紹介</th>
+  </tr>
+  <% @user.each do |row| %>
+  <tr>
+    <td><input type="text" name="name" value="<%= row.name %>"></td>
+    <td><input type="text" name="age" value="<%= row.age %>"></td>
+    <td><input type="text" name="profile" value="<%= row.profile %>"></td>
+  </tr>
+  <input type="hidden" name="id" value="<%= row.id %>">
+  <% end %>
+</table>
+<input type="submit" value="send">
+</form>
+</div>
+</body>

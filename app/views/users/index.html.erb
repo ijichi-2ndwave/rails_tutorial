@@ -1,0 +1,24 @@
+<body>
+<div class="example">
+<h1>ユーザー情報一覧</h1>
+ <a href="/users/create">[ユーザー作成]</a>
+<table border="1">
+  <tr>
+    <th>名前</th>
+    <th>年齢</th>
+    <th>プロフィール</th>
+　　<th>編集</th>
+    <th>削除</th>
+  </tr>
+<% @user.each do |user| %>
+  <tr>
+    <td><%= user.name %></td>
+    <td><%= user.age %></td>
+    <td><%= user.profile %></td>
+    <td><a href="/users/edit?id=<%= user.id %>">編集</a></td>
+    <td><a href="/users/destroy?id=<%= user.id %>">削除</a></td>
+  </tr>
+  <% end %>
+</table>
+</div>
+</body>
