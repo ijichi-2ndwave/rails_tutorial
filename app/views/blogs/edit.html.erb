@@ -1,0 +1,15 @@
+<h1>ブログ編集</h1>
+<%=form_for @blog do |db| %>
+    <p>
+    <%= db.label(:title,"タイトル")%>
+    <%= db.text_field :title%>
+    </p>
+    <p>
+    <%= db.label :content, "本文" %>
+    <%= db.text_area :content %>
+    </p>
+    <%= db.submit "更新" %>
+<th><%= link_to "一覧", blogs_path %></th>
+<th><%= link_to "詳細へもどる", blog_path %></th>
+<% end %>
+

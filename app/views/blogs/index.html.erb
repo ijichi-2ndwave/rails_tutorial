@@ -1,0 +1,23 @@
+<!-- filename:index.html.erb -->
+<h1>ブログ一覧</h1> <!-- 見出し -->
+<!-- 表の設定 -->
+
+<!-- 外枠の太さと罫線の表示形式を指定している -->
+<table border = "1" rules = "all">
+    <tr>
+    <!-- 見出し1 -->
+        <th>ID</th>
+        <!-- 見出し2 -->
+        <th style = "text-align:center">タイトル</th>
+    </tr>
+    <!--blogモデルに紐づくblogsテーブルから全てのデータを取得-->
+    <% @blog.each do |blog| %>
+        <tr>
+            <!--td style = "text-align:center"> <%= blog.id %> </td-->
+            <td style="text-align:center"><%= link_to blog.id,blog_path(blog.id)%></td>
+            <td style = "text-align:left"> <%= blog.title %> </td>
+            <td style = "text-align:left"> <%= blog.content %> </td>
+        </tr>
+    <% end %>
+        <th><%= link_to"新規投稿", new_blog_path%></t
+</table>

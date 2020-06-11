@@ -1,4 +1,6 @@
-Rails.application.routes.draw do
+Rails.application.routes.draw do 
+  resources :blogs
+  get 'blogs/destroy/:id' => 'blogs#destroy'
   get 'users/index'
   get 'users/new'
   get 'users/show'

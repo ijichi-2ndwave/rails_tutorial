@@ -1,0 +1,19 @@
+<h1>確認</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <td><%= @blog.id %></td>
+    </tr>
+    <tr>
+        <th>タイトル</th>
+        <td><%= @blog.title %></td>
+    </tr>
+    <tr>
+        <th>本文</th>
+        <td><%= @blog.content %></td>
+    </tr>
+<th><%= link_to "編集", edit_blog_path %></th>
+<!--th><%= button_to "削除", blogs_path(@blog.id), method: :delete %></th-->
+<td><a href="/blogs/destroy/<%= @blog.id %>">削除</a></td>
+<th><%= link_to "一覧", blogs_path %></th>
+</table>
