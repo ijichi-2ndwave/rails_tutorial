@@ -8,6 +8,9 @@
     <%= f.label :content, "本文" %>
     <%= f.text_area :content %>
     </p>
+    <% if @blog.errors.any? %>
+        <p>エラー!</p>
+    <% end %>
     <%= f.submit "登録" %>
 <th><%= link_to "一覧", blogs_path %></th>
   <% end %>

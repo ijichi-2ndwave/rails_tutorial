@@ -1,4 +1,6 @@
 <!-- filename:index.html.erb -->
+<body>
+<div>
 <h1>ブログ一覧</h1> <!-- 見出し -->
 <!-- 表の設定 -->
 
@@ -6,9 +8,12 @@
 <table border = "1" rules = "all">
     <tr>
     <!-- 見出し1 -->
-        <th>ID</th>
+        <th style = "text-align:center">ID</th>
         <!-- 見出し2 -->
         <th style = "text-align:center">タイトル</th>
+        <!-- 見出し3 -->
+        <th style = "text-align:center">記事の内容</th>
+        
     </tr>
     <!--blogモデルに紐づくblogsテーブルから全てのデータを取得-->
     <% @blog.each do |blog| %>
@@ -19,5 +24,7 @@
             <td style = "text-align:left"> <%= blog.content %> </td>
         </tr>
     <% end %>
-        <th><%= link_to"新規投稿", new_blog_path%></t
 </table>
+<th><%= link_to"新規投稿", new_blog_path%></t>
+</div>
+</body>

@@ -1,3 +1,3 @@
 class Blog < ApplicationRecord
-validates :title, :content, presence: true, length: { in: 1..30 }
+validates :title, :content, presence: true, length: { in: 3..30 }
 end
