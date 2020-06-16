@@ -1,6 +1,12 @@
 class BlogsController < ApplicationController
+  before_action :find_id, only: [:show, :edit, :update, :destroy]
+  
   def index
-    @blog = Blog.all
+    if params[:search].present?
+      @blogs = Blog.search(params[:search])
+    else
+    @blogs = Blog.all
+    end
   end
 
   def new
@@ -12,22 +18,19 @@ class BlogsController < ApplicationController
     @blog = Blog.new (permitted_params)
     if @blog.save
       flash[:notice] = "新規登録しました！"
-      redirect_to blogs_path
+      redirect_to blog_path(@blog.id)
     else
       render 'new'
    end
   end
 
   def show
-   @blog = Blog.find(params[:id])
   end
 
   def edit
-    @blog = Blog.find(params[:id])
   end
 
   def update
-    @blog = Blog.find(params[:id])
    if @blog.update(params.require(:blog).permit(:title, :content))
     flash[:notice] = "更新しました！"
     redirect_to blogs_path
@@ -37,8 +40,12 @@ class BlogsController < ApplicationController
   end
 
   def destroy  
-    @blog = Blog.find(params[:id])
     @blog.destroy
     redirect_to action: :index
   end
+
+  def find_id
+    @blog = Blog.find(params[:id])
+  end
+
 end

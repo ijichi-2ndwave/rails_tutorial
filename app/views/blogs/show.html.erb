@@ -15,7 +15,6 @@
     </table>
 
 <th><%= link_to "編集", edit_blog_path %></th>
-<!--th><%= button_to "削除", blogs_path(@blog.id), method: :delete %></th-->
-<td><a href="/blogs/destroy/<%= @blog.id %>">削除</a></td>
+<th><%= button_to "削除", blog_path(@blog.id), {method: :delete ,data: {confirm: "本当に削除しますか？"} }%></th>
 <th><%= link_to "一覧", blogs_path %></th>
 
