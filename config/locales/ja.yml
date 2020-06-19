@@ -1,0 +1,15 @@
+ja:
+  title: タイトル
+  content: 記事の内容
+
+  Title: タイトル
+  Content: 記事の内容
+  
+  activerecord:
+    models:
+      event: イベント
+    attributes:
+      event:
+        name: イベント名
+        place: 開催場所
+        content: イベント内容

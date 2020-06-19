@@ -1,15 +1,53 @@
 <!DOCTYPE html>
 <html>
-  <head>
+  <head class="header">
     <title>RailsTutorial</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%#= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    
+    
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="bg-success">
+
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/blogs">ブログ</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navigation">
+    <% if user_signed_in? %>
+      <a class="navbar-text navbar-right" href= destroy_user_session_path, method: :delete>ログアウト</a>
+      <p class="navbar-text navbar-right"><%= current_user.user_name %>さんでログイン中</p>
+      <a class="navbar-text navbar-right" href="/blogs/new">新規投稿</a>
+      <%= button_to "ログアウト", destroy_user_session_path, {method: :delete} %>
+      
+    <% else %>
+     <%#a class="navbar-text navbar-right" href= new_user_registration_path, method: :post>新規登録</a%>
+     <a class="navbar-text navbar-right" href= /users/sign_up>新規登録</a>
+     <a class="navbar-text navbar-right" href= /users/sign_in >ログイン</a>
+    <% end %>
+  </div>
+    
+    
+      </div>
+  </div>
+</nav>
+
+  <%#左右に余白%>
+  <div class="container">
+
+  <%#対応するHTMLを読む%> 
+  <%= yield %>
+  </div>
   </body>
 </html>

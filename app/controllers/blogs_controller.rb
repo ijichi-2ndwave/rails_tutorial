@@ -5,16 +5,18 @@ class BlogsController < ApplicationController
     if params[:search].present?
       @blogs = Blog.search(params[:search])
     else
-    @blogs = Blog.all
+    #@blogs = Blog.all
+    @blogs = Blog.paginate(page: params[:page],per_page: 10)
     end
   end
 
   def new
     @blog = Blog.new
+    @user = current_user
   end
 
   def create
-    permitted_params = params.require(:blog).permit(:id, :title, :content)
+    permitted_params = params.require(:blog).permit(:id, :title, :content,:user_id)
     @blog = Blog.new (permitted_params)
     if @blog.save
       flash[:notice] = "新規登録しました！"
@@ -46,6 +48,7 @@ class BlogsController < ApplicationController
 
   def find_id
     @blog = Blog.find(params[:id])
+    @user = current_user
   end
 
 end

@@ -1,20 +1,38 @@
-<h1>確認</h1>
+
+<h1>詳細確認</h1>
 <table border = "1" rules = "all">
-    <tr>
-        <th>ID</th>
-        <td><%= @blog.id %></td>
-    </tr>
     <tr>
         <th>タイトル</th>
         <td><%= @blog.title %></td>
     </tr>
     <tr>
-        <th>本文</th>
+        <th>記事の内容</th>
         <td><%= @blog.content %></td>
     </tr>
-    </table>
+    
+    <tr>
+    <th>投稿日</th>
+    <td><%= @blog.created_at %></td>
+    </tr>
+    <tr>
+    <th>最終更新日</th>
+    <td><%= @blog.updated_at %></td>
+    </tr>
+    <tr>
+    <th>投稿者</th>
+    <!--Usernameの取得と無名時の処理-->
+    <%  @user_name = User.find_by(id: @blog.user_id)%>
+    <%if @user_name%>
+    <td style = "text-align:left"><%= @user_name.user_name%></td>
+    <%else%>
+    <td style = "text-align:left">未記入</td>
+    <%end%> 
 
+    </table>
+    <% if user_signed_in? and @blog.user_id.to_s == @user.id.to_s %>
 <th><%= link_to "編集", edit_blog_path %></th>
 <th><%= button_to "削除", blog_path(@blog.id), {method: :delete ,data: {confirm: "本当に削除しますか？"} }%></th>
+<th><%= link_to "削除", blog_path(@blog.id), method: :delete,data: {confirm: "本当に削除しますか？"}  %></th>
+<% end %>
 <th><%= link_to "一覧", blogs_path %></th>
 

@@ -1,6 +1,14 @@
 Rails.application.routes.draw do 
+
+  root to: "blogs#index"
+  devise_for :users, controllers:{
+          sessions: 'users/sessions',
+          registrations: 'users/registrations'}
+
+  
   resources :blogs
-  get 'blogs/destroy/:id' => 'blogs#destroy'
+  
+  #get 'blogs/destroy/:id' => 'blogs#destroy'
   get 'users/index'
   get 'users/new'
   get 'users/show'

@@ -7,7 +7,7 @@ def self.search(search)
       sql_body = ''
       patterns.each do | pattern |
         sql_body += ' and ' unless sql_body.blank?
-        sql_body += " title like '%#{pattern}%' "
+        sql_body += " content like '%#{pattern}%' "
       end
       sql = "select * from blogs where #{sql_body} order by id desc"
       blog_ids = Blog.find_by_sql(sql)
@@ -19,5 +19,5 @@ def self.search(search)
     else
     Blog.all #全て表示。
   end
-  
+  end
 end

@@ -38,4 +38,6 @@ protect_from_forgery :except => [:update]
     User.deleteUserInfo(params[:id])
     redirect_to :action => "index"     
   end
+
+
 end
